@@ -2,6 +2,7 @@ package com.santhanam.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
@@ -27,6 +28,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MemberNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleMemberNotFound(MemberNotFoundException ex, WebRequest request) {
         return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND, request);
+    }
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> handleJsonParseError(HttpMessageNotReadableException ex, WebRequest request) {
+        return buildErrorResponse("Invalid request payload: " + ex.getMostSpecificCause().getMessage(), HttpStatus.BAD_REQUEST, request);
     }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleOtherExceptions(Exception ex, WebRequest request) {

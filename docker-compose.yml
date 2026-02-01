@@ -5,6 +5,11 @@ services:
     container_name: redis-team
     ports:
       - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
   organization-team-service:
     build: .
     container_name: organization-team-service
@@ -13,5 +18,6 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=default
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
 # Author: Santhanam
