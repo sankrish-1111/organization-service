@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis-team
+    ports:
+      - "6379:6379"
+  organization-team-service:
+    build: .
+    container_name: organization-team-service
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+    depends_on:
+      - redis
+# Author: Santhanam
