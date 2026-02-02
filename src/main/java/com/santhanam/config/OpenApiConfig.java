@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * OpenAPI/Swagger configuration for the application.
- * Author: Santhanam
- */
+*/
 @Configuration
 public class OpenApiConfig {
     @Bean

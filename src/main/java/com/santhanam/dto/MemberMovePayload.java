@@ -7,10 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Payload for moving a member to another group.
- * Author: Santhanam
- */
+
 @Data
 @Builder
 @NoArgsConstructor

@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Integration test for verifying the inheritance logic of the Group Management Service.
  * This test ensures that child groups correctly inherit properties from their parent hierarchy.
- * Author: Santhanam
  */
 @SpringBootTest
 @TestPropertySource(properties = {

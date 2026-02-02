@@ -12,8 +12,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Redis configuration for the application.
- * Author: Santhanam
- */
+*/
 @Configuration
 @EnableRedisRepositories(basePackages = "com.santhanam.repository")
 public class RedisConfig {

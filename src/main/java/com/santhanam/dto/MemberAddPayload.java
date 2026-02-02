@@ -7,10 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Payload for adding a member to a team.
- * Author: Santhanam
- */
+
 @Data
 @Builder
 @NoArgsConstructor
