@@ -20,4 +20,3 @@ services:
     depends_on:
       redis:
         condition: service_healthy
-# Author: Santhanam
