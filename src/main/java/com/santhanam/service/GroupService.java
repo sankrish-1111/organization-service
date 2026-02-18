@@ -131,6 +131,14 @@ public class GroupService {
         log.info("Updating group with UUID: {}", uuid);
         Group group = groupRepository.findById(uuid)
                 .orElseThrow(() -> new GroupNotFoundException(uuid));
+
+        // Validate parentUuid if provided in update request
+        if (request.getParentUuid() != null && !request.getParentUuid().isEmpty()) {
+            groupRepository.findById(request.getParentUuid())
+                    .orElseThrow(() -> new ParentGroupNotFoundException(request.getParentUuid()));
+            group.setParentUuid(request.getParentUuid());
+        }
+
         if (request.getName() != null) {
             group.setName(request.getName());
         }
